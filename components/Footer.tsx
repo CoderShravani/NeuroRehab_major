@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { Page } from '../types';
 
@@ -21,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Home); }} className="hover:text-accent transition-colors">Home</a></li>
               <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.About); }} className="hover:text-accent transition-colors">About</a></li>
               <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Contact); }} className="hover:text-accent transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Blog</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Blog); }} className="hover:text-accent transition-colors">Blog</a></li>
               <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.SignIn); }} className="hover:text-accent transition-colors">Sign In</a></li>
             </ul>
           </div>

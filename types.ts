@@ -1,4 +1,5 @@
 
+
 export enum Page {
   Home = 'HOME',
   SignIn = 'SIGN_IN',
@@ -7,6 +8,8 @@ export enum Page {
   PatientForm = 'PATIENT_FORM',
   PatientDashboard = 'PATIENT_DASHBOARD',
   DoctorDashboard = 'DOCTOR_DASHBOARD',
+  Blog = 'BLOG',
+  BlogPost = 'BLOG_POST',
 }
 
 export enum UserRole {
@@ -30,4 +33,15 @@ export interface Patient {
     mobilityData: { week: string; score: number }[];
     accuracyData: { day: string; score: number }[];
     gamesPlayedData: { name: string; value: number }[];
+}
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  author: string;
+  date: string;
+  category: string;
+  image: string;
+  excerpt: string;
+  content: string;
 }

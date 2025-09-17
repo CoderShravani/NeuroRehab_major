@@ -7,8 +7,10 @@ import PatientForm from './components/PatientForm';
 import PatientDashboard from './components/PatientDashboard';
 import DoctorDashboard from './components/DoctorDashboard';
 import GameHost from './components/games/GameHost';
-import ChatbotPage from './components/ChatbotPage'; // Import the new chatbot page
-import { Page, User, UserRole } from './types';
+import ChatbotPage from './components/ChatbotPage';
+import BlogPage from './components/BlogPage';
+import BlogPostPage from './components/BlogPostPage';
+import { Page, User, UserRole, BlogPost } from './types';
 import { auth, db } from './firebase';
 
 const App: React.FC = () => {
@@ -16,7 +18,8 @@ const App: React.FC = () => {
   const [page, setPage] = useState<Page>(Page.Home);
   const [loading, setLoading] = useState(true);
   const [activeGame, setActiveGame] = useState<string | null>(null);
-  const [isChatOpen, setIsChatOpen] = useState(false); // State for chatbot visibility
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [activePost, setActivePost] = useState<BlogPost | null>(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (firebaseUser) => {
@@ -78,6 +81,11 @@ const App: React.FC = () => {
     }
   };
 
+  const handleSelectPost = (post: BlogPost) => {
+    setActivePost(post);
+    setPage(Page.BlogPost);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-brand-light">
@@ -120,6 +128,15 @@ const App: React.FC = () => {
       return <AboutPage onNavigate={setPage} />;
     case Page.Contact:
       return <ContactPage onNavigate={setPage} />;
+    case Page.Blog:
+      return <BlogPage onNavigate={setPage} onSelectPost={handleSelectPost} />;
+    case Page.BlogPost:
+      if (activePost) {
+        return <BlogPostPage post={activePost} onNavigate={setPage} />;
+      }
+      // Fallback if no post is active, go to blog list
+      setPage(Page.Blog);
+      return <BlogPage onNavigate={setPage} onSelectPost={handleSelectPost} />;
     case Page.Home:
     default:
       return <HomePage onNavigate={setPage} />;
