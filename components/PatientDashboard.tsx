@@ -7,6 +7,10 @@ import AccuracyChart from './charts/AccuracyChart';
 import GamesPlayedChart from './charts/GamesPlayedChart';
 import Button from './ui/Button';
 import MedicalHistoryModal from './MedicalHistoryModal'; // Import the new modal
+import ReactionTimeChart from './charts/ReactionTimeChart';
+import AccuracyTrendChart from './charts/AccuracyTrendChart';
+import SessionDurationChart from './charts/SessionDurationChart';
+import GameCompletionChart from './charts/GameCompletionChart';
 
 interface PatientDashboardProps {
   user: User;
@@ -118,7 +122,30 @@ const mockData = {
         { name: 'Memory Bridge', value: 8 },
         { name: 'Bubble Burst', value: 15 },
         { name: 'Ball Catcher', value: 10 },
-    ]
+    ],
+    reactionTimeData: [
+        { name: 'Week 1', time: 450 },
+        { name: 'Week 2', time: 420 },
+        { name: 'Week 3', time: 380 },
+        { name: 'Week 4', time: 350 },
+    ],
+    accuracyTrendData: [
+        { name: 'Day 1', accuracy: 78 },
+        { name: 'Day 2', accuracy: 82 },
+        { name: 'Day 3', accuracy: 81 },
+        { name: 'Day 4', accuracy: 85 },
+        { name: 'Day 5', accuracy: 88 },
+    ],
+    sessionDurationData: [
+        { name: 'Mon', duration: 15 },
+        { name: 'Tue', duration: 20 },
+        { name: 'Wed', duration: 18 },
+        { name: 'Thu', duration: 25 },
+        { name: 'Fri', duration: 22 },
+    ],
+    gameCompletionData: [
+        { name: 'Completed', value: 65, fill: '#22c55e' }
+    ],
 };
 
 interface GameCardProps {
@@ -165,13 +192,35 @@ const PatientDashboard: React.FC<PatientDashboardProps> = ({ user, onLogout, onP
             <div className="lg:col-span-2 space-y-6">
               <Card>
                 <h3 className="text-xl font-bold text-brand-dark mb-4">Progress & Analysis</h3>
-                <p className="bg-brand-light text-brand-dark p-3 rounded-lg mb-4">
+                <p className="bg-brand-light text-brand-dark p-3 rounded-lg mb-6">
                   💡 <span className="font-semibold">AI Insight:</span> {aiInsight}
                 </p>
-                <h4 className="font-semibold text-lg mb-2">Mobility Improvement</h4>
-                <MobilityChart data={mockData.mobilityData} />
-                <h4 className="font-semibold text-lg mt-6 mb-2">Accuracy Scores</h4>
-                <AccuracyChart data={mockData.accuracyData} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2 text-center">Mobility Improvement</h4>
+                    <MobilityChart data={mockData.mobilityData} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2 text-center">Accuracy Scores</h4>
+                    <AccuracyChart data={mockData.accuracyData} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2 text-center">Reaction Time Progress</h4>
+                    <ReactionTimeChart data={mockData.reactionTimeData} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2 text-center">Movement Accuracy Trend</h4>
+                    <AccuracyTrendChart data={mockData.accuracyTrendData} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2 text-center">Session Duration</h4>
+                    <SessionDurationChart data={mockData.sessionDurationData} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2 text-center">Game Completion</h4>
+                    <GameCompletionChart data={mockData.gameCompletionData} />
+                  </div>
+                </div>
               </Card>
 
               <Card>
