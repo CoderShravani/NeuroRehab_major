@@ -1,0 +1,8 @@
+{
+  "name": "Copy of NeuroRehab Web Application",
+  "description": "A digital rehabilitation platform designed to support patients recovering from neurological conditions and doctors/physiotherapists who guide their recovery through therapeutic games, real-time progress tracking, and communication.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}
