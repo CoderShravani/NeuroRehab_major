@@ -1,8 +1,12 @@
 
 import React from 'react';
-import { Page } from '../types'; // Assuming Page enum is available for navigation
+import { Page } from '../types';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: Page) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-brand-dark text-white">
       <div className="container mx-auto px-6 py-12">
@@ -14,11 +18,11 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-accent transition-colors">Home</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Contact</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Home); }} className="hover:text-accent transition-colors">Home</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.About); }} className="hover:text-accent transition-colors">About</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Contact); }} className="hover:text-accent transition-colors">Contact</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Sign In</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.SignIn); }} className="hover:text-accent transition-colors">Sign In</a></li>
             </ul>
           </div>
           <div>

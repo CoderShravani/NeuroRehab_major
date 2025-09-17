@@ -25,8 +25,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onLogout, isLoggedIn = fals
         </div>
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Home); }} className="text-slate-600 hover:text-brand-primary font-medium transition-colors">Home</a>
-          <a href="#" className="text-slate-600 hover:text-brand-primary font-medium transition-colors">About</a>
-          <a href="#" className="text-slate-600 hover:text-brand-primary font-medium transition-colors">Contact</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.About); }} className="text-slate-600 hover:text-brand-primary font-medium transition-colors">About</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); onNavigate(Page.Contact); }} className="text-slate-600 hover:text-brand-primary font-medium transition-colors">Contact</a>
         </nav>
         <div>
           {isLoggedIn && onLogout ? (

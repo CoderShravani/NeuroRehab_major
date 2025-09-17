@@ -275,7 +275,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
              </div>
         </section>
       </main>
-      <Footer />
+      <Footer onNavigate={onNavigate} />
     </>
   );
 };

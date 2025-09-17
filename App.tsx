@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import HomePage from './components/HomePage';
 import SignInPage from './components/SignInPage';
+import AboutPage from './components/AboutPage';
+import ContactPage from './components/ContactPage';
 import PatientForm from './components/PatientForm';
 import PatientDashboard from './components/PatientDashboard';
 import DoctorDashboard from './components/DoctorDashboard';
@@ -114,6 +116,10 @@ const App: React.FC = () => {
   switch (page) {
     case Page.SignIn:
       return <SignInPage onNavigate={setPage} onDemoSignIn={handleDemoSignIn} />;
+    case Page.About:
+      return <AboutPage onNavigate={setPage} />;
+    case Page.Contact:
+      return <ContactPage onNavigate={setPage} />;
     case Page.Home:
     default:
       return <HomePage onNavigate={setPage} />;

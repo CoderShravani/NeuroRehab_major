@@ -2,6 +2,8 @@
 export enum Page {
   Home = 'HOME',
   SignIn = 'SIGN_IN',
+  About = 'ABOUT',
+  Contact = 'CONTACT',
   PatientForm = 'PATIENT_FORM',
   PatientDashboard = 'PATIENT_DASHBOARD',
   DoctorDashboard = 'DOCTOR_DASHBOARD',
